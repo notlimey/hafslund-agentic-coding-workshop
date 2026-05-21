@@ -28,6 +28,69 @@
       </button>
     </section>
 
+    <section class="rounded-lg border border-slate-200 bg-white p-4 space-y-4">
+      <h2 class="text-xl font-semibold">EV charge planner</h2>
+      <p class="text-slate-600 text-sm">
+        Norwegian spot prices for today. Pick a price area and how long you need to charge —
+        we'll point at the cheapest contiguous window and (optionally) ping you when it starts.
+      </p>
+
+      <div class="flex flex-wrap items-end gap-3">
+        <label class="flex flex-col text-sm">
+          Area
+          <select id="area" class="mt-1 rounded border border-slate-300 px-2 py-1">
+            <option value="NO1">NO1 — Oslo / East</option>
+            <option value="NO2">NO2 — Kristiansand / South</option>
+            <option value="NO3">NO3 — Trondheim / Mid</option>
+            <option value="NO4">NO4 — Tromsø / North</option>
+            <option value="NO5">NO5 — Bergen / West</option>
+          </select>
+        </label>
+
+        <label class="flex flex-col text-sm">
+          Day
+          <input id="day" type="date"
+                 class="mt-1 rounded border border-slate-300 px-2 py-1" />
+        </label>
+
+        <label class="flex flex-col text-sm">
+          Charge hours
+          <input id="hours" type="number" min="1" max="12" value="4"
+                 class="mt-1 rounded border border-slate-300 px-2 py-1 w-24" />
+        </label>
+
+        <label class="flex flex-col text-sm">
+          Away from
+          <input id="away-start" type="time"
+                 class="mt-1 rounded border border-slate-300 px-2 py-1" />
+        </label>
+
+        <label class="flex flex-col text-sm">
+          Away until
+          <input id="away-end" type="time"
+                 class="mt-1 rounded border border-slate-300 px-2 py-1" />
+        </label>
+
+        <button id="plan-charge" type="button"
+                class="rounded bg-emerald-700 text-white px-4 py-2 hover:bg-emerald-800">
+          Plan charge
+        </button>
+
+        <button id="enable-notify" type="button"
+                class="rounded border border-slate-300 px-4 py-2 hover:bg-slate-100">
+          Enable notification
+        </button>
+      </div>
+      <p class="text-xs text-slate-500">
+        "Away" hours are excluded from the charge window — e.g. set 08:00 → 16:00 for a workday.
+      </p>
+
+      <div id="charge-recommendation" class="text-sm text-slate-700"></div>
+      <div id="notify-status" class="text-xs text-slate-500"></div>
+
+      <ol id="price-list" class="font-mono text-sm divide-y divide-slate-100 border-t border-slate-100"></ol>
+    </section>
+
     <div id="error" role="alert"
          class="rounded-lg border border-red-300 bg-red-50 text-red-800 p-4" hidden></div>
   </main>
