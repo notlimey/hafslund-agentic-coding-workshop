@@ -13,7 +13,7 @@
   <script src="app.js" defer></script>
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-900 font-sans">
-  <main class="max-w-xl mx-auto p-8 space-y-6">
+  <main class="max-w-4xl mx-auto p-8 space-y-6">
     <h1 class="text-3xl font-bold">Agentic Coding Workshop</h1>
     <p class="text-slate-600">
       Smoke test — confirms the backend, database, static-file serving, and frontend→backend call all work.
@@ -88,7 +88,24 @@
       <div id="charge-recommendation" class="text-sm text-slate-700"></div>
       <div id="notify-status" class="text-xs text-slate-500"></div>
 
+      <svg id="price-chart" class="w-full" aria-label="Hourly price chart"></svg>
       <ol id="price-list" class="font-mono text-sm divide-y divide-slate-100 border-t border-slate-100"></ol>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
+      <h2 class="text-xl font-semibold">Weekend vs weekday</h2>
+      <p class="text-slate-600 text-sm">
+        Hour-of-day average NO1 spot price across the last two complete Monday–Sunday weeks.
+      </p>
+      <div id="history-warning"
+           class="rounded border border-amber-300 bg-amber-50 text-amber-800 text-xs p-2"
+           hidden></div>
+      <div id="history-error"
+           class="rounded border border-red-300 bg-red-50 text-red-800 text-sm p-2"
+           hidden></div>
+      <div id="history-legend" class="flex gap-4 text-xs text-slate-600" hidden></div>
+      <div id="history-summary" class="text-sm text-slate-700" hidden></div>
+      <svg id="history-chart" class="w-full" aria-label="Weekday vs weekend price chart"></svg>
     </section>
 
     <div id="error" role="alert"

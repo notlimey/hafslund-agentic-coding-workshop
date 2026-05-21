@@ -3,7 +3,12 @@ from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, HTTPException, Query
 
-from ..schemas import ChargeWindow, PricesOut
+from ..schemas import ChargeWindow, PriceHistoryOut, PricesOut
+from ..services.price_history import (
+    HistoryAllMissingError,
+    HistoryUpstreamError,
+    get_history,
+)
 from ..services.prices import (
     NoValidWindowError,
     PricesNotPublishedError,
@@ -63,3 +68,13 @@ def get_cheapest_window(
         return cheapest_window(prices, hours, area, blocked)
     except NoValidWindowError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
+
+
+@router.get("/prices/history", response_model=PriceHistoryOut)
+def get_price_history():
+    try:
+        return get_history()
+    except HistoryAllMissingError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except HistoryUpstreamError as e:
+        raise HTTPException(status_code=502, detail=str(e)) from e

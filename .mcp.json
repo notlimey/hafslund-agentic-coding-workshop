@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "strompris": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "./strompris-mcp",
+        "strompris-mcp"
+      ],
+      "env": {}
+    }
+  }
+}

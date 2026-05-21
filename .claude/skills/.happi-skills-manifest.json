@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-21T08:59:54Z",
+  "ref": "main",
+  "target": "claude-code",
+  "files": [
+    "general-engineering-practice/SKILL.md",
+    "python-code-style/SKILL.md",
+    "python-packaging/SKILL.md",
+    "python-test-style/SKILL.md",
+    "python-typing/SKILL.md"
+  ]
+}

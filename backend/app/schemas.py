@@ -34,3 +34,15 @@ class ChargeWindow(BaseModel):
     end: datetime
     avg_NOK_per_kWh: float
     total_NOK_per_kWh: float
+
+
+class HourBucket(BaseModel):
+    hour: int
+    avg_NOK_per_kWh: float
+    count: int
+
+
+class PriceHistoryOut(BaseModel):
+    weekday: list[HourBucket]
+    weekend: list[HourBucket]
+    missing_days: list[str]

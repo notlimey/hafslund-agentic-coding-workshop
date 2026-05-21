@@ -1,0 +1,20 @@
+[project]
+name = "strompris-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Martin Myhre", email = "70258183+notlimey@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp>=1.27.1",
+]
+
+[project.scripts]
+strompris-mcp = "strompris_mcp:main"
+
+[build-system]
+requires = ["uv_build>=0.11.15,<0.12.0"]
+build-backend = "uv_build"
